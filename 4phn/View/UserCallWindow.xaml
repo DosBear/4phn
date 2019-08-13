@@ -1,0 +1,27 @@
+﻿<Window x:Class="_4phn.View.UserCallWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_4phn.View"
+        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:_4phn.ViewModels"
+        Title="Позвонить" Height="70" Width="390" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:SecondaryModelView />
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.39*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="txtPhone" Grid.Column="0" Background="#EAEFFF" FontSize="28"  Text="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"/>
+        <Button Grid.Column="1" x:Name="btnCall" Command="{Binding Path=UserCall}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/callme.png" Width="16" Height="16" Margin="10"/>
+                    <TextBlock Text="Позвонить" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+    </Grid>
+</Window>
