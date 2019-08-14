@@ -18,6 +18,7 @@ namespace _4phn
             public readonly static string DND = "Custom:DND{0}";
             public readonly static string DND_STATE_BUSY = "BUSY";
             public readonly static string UNKNOWN = "<unknown>";
+            public readonly static string NOANSWER = "NO ANSWER";
         }
 
         public struct SQL

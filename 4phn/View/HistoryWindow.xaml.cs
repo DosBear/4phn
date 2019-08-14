@@ -32,7 +32,11 @@ namespace _4phn.View
             {
                 DataRow row = item.Row;
                 BrushConverter bc = new BrushConverter();
-                if (row["src"].ToString() == Properties.Settings.Default.Phone)
+                if (row["disposition"].ToString() == Const.Phone.NOANSWER)
+                {
+                    e.Row.Background = (Brush)bc.ConvertFrom("#FFC1C3");
+                }
+                else if (row["src"].ToString() == Properties.Settings.Default.Phone)
                 {
                     e.Row.Background = (Brush)bc.ConvertFrom("#AFFFB9");
                 } else

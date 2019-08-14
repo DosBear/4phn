@@ -12,13 +12,8 @@
     <Grid>
 
 
-        <tb:TaskbarIcon IconSource="/Resources/call.ico" ToolTipText="Работа с АТС" x:Name="taskbarIcon" DoubleClickCommand="{Binding Path=LastCall, Mode=OneWay}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="TrayMouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding Path=LastCall, Mode=OneWay}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            
+        <tb:TaskbarIcon IconSource="/Resources/call.ico" ToolTipText="Работа с АТС" x:Name="taskbarIcon" DoubleClickCommand="{Binding Path=HistoryPhone, Mode=OneWay}">
+
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem  Header="Последний звонок" FontWeight="Bold" Command="{Binding Path=LastCall}">

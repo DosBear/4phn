@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using AsterNET.Manager;
 using AsterNET.Manager.Action;
 
@@ -29,6 +30,7 @@ namespace _4phn
                 LogWriter.Instance.WriteToLog("ATS version " + manager.AsteriskVersion);
             } catch(Exception err)
             {
+                MessageBox.Show("Ошибка подключения с серверу" + err.Message, "Ошиюка", MessageBoxButton.OK, MessageBoxImage.Error);
                 LogWriter.Instance.WriteToLog("ATS init error " + err.Message);
             }
         }
