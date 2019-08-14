@@ -24,16 +24,6 @@ namespace _4phn.View
             InitializeComponent();
         }
 
-        private void GridPhoneBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (gridPhoneBook.SelectedItem == null) return;
-            DataRowView drv = (DataRowView)gridPhoneBook.SelectedItem;
-            string name = drv.Row.ItemArray[1].ToString();
-            string phone = drv.Row.ItemArray[0].ToString();
-            LastCallWindow lstCallWindow = new LastCallWindow();
-            lstCallWindow.phone = phone;
-            lstCallWindow.name = name;
-            lstCallWindow.ShowDialog();
-        }
+
     }
 }

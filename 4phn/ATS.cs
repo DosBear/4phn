@@ -16,6 +16,8 @@ namespace _4phn
   
         public static void Init()
         {
+            if (Properties.Settings.Default.Server == String.Empty) return;
+
             try
             {
                 LogWriter.Instance.WriteToLog("Try connect to ATS");
@@ -30,7 +32,7 @@ namespace _4phn
                 LogWriter.Instance.WriteToLog("ATS version " + manager.AsteriskVersion);
             } catch(Exception err)
             {
-                MessageBox.Show("Ошибка подключения с серверу" + err.Message, "Ошиюка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка подключения с серверу: " + err.Message, "Ошиюка", MessageBoxButton.OK, MessageBoxImage.Error);
                 LogWriter.Instance.WriteToLog("ATS init error " + err.Message);
             }
         }

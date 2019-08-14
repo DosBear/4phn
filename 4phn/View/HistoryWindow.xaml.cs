@@ -64,27 +64,5 @@ namespace _4phn.View
     }
 
 
-    public sealed class SrcimageToImageConvertor : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is string)
-            {
-                if (value.ToString() == Properties.Settings.Default.Phone)
-                {
-                    return "/Resources/user.png";
-                }
-                else
-                {
-                    return "/Resources/org.png";
-                }
-            }
-            else return "";
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
+ 
 }

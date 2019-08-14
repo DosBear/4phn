@@ -25,7 +25,7 @@ namespace _4phn.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.02")]
         public string Version {
             get {
                 return ((string)(this["Version"]));
@@ -34,7 +34,7 @@ namespace _4phn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("105")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Phone {
             get {
                 return ((string)(this["Phone"]));
@@ -58,7 +58,7 @@ namespace _4phn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("26677")]
         public int Port {
             get {
                 return ((int)(this["Port"]));

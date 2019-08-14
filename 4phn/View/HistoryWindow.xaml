@@ -3,16 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:_4phn.View"
         xmlns:vm="clr-namespace:_4phn.ViewModels"
         mc:Ignorable="d"
          Title="История звонков" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:GridModelView />
     </Window.DataContext>
-    <Window.Resources>
-        <local:SrcimageToImageConvertor x:Key="SrcimageToImageConvertor"/>
-    </Window.Resources>
+
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,17 +24,44 @@
                        IsReadOnly="True" Grid.ColumnSpan="2"
                        ItemsSource="{Binding Path=HistoryBook}"
                        LoadingRow="GridHistoryeBook_LoadingRow"
-                   MouseDoubleClick="GridHistoryBook_MouseDoubleClick"  
                    >
 
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="16" IsReadOnly="True">
+           
+
+
+                <DataGridTemplateColumn Width="24">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Path=srcimage, Converter={StaticResource SrcimageToImageConvertor}}" Width="16" Height="16"/>
+                            <Button Name="btnCall" Command="{Binding Path=DataContext.CallHistoryRow, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                    CommandParameter="{Binding SelectedItems, ElementName=gridHistoryBook}">
+                                <Image Source="/Resources/callphone.png" Width="16" Height="16"/>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="24">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEdit" Command="{Binding Path=DataContext.EditHistoryRow, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                    CommandParameter="{Binding SelectedItems, ElementName=gridHistoryBook}">
+                                <Image Source="/Resources/edit.png" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="24">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnCopy" Command="{Binding Path=DataContext.CopyHistoryRow, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                    CommandParameter="{Binding SelectedItems, ElementName=gridHistoryBook}">
+                                <Image Source="/Resources/minicopy.png" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
                 <DataGridTextColumn Header="Время"  Width="auto" IsReadOnly="True"  Binding="{Binding Path=calldate, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"/>
                 <DataGridTextColumn Header="Контакт"  Width="*" IsReadOnly="True"  Binding="{Binding Path=clid}"/>
                 <DataGridTextColumn Header="Телефон исх" Width="auto" IsReadOnly="True"  Binding="{Binding Path=src}"  />
