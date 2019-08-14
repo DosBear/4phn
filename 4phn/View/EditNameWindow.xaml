@@ -20,11 +20,11 @@
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="0.5*"/>
             </Grid.RowDefinitions>
-            <Label x:Name="lblPhone" Content="{Binding Path=Phone}" FontSize="28" Foreground="DarkBlue"/>
-            <TextBox x:Name="txtName" Grid.Row="1" FontSize="28" Text="{Binding Path=OrgName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label x:Name="lblPhone" Content="{Binding Path=Phone, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" FontSize="28" Foreground="DarkBlue"/>
+            <TextBox x:Name="txtName" Grid.Row="1" FontSize="28" Text="{Binding Path=OrgName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
 
-        <Button Grid.Column="1" x:Name="btnCopy"  Command="Save">
+        <Button Grid.Column="1" x:Name="btnCopy"  Command="{Binding Path=Save}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/save.png" Width="16" Height="16" Margin="10"/>
                 <TextBlock Text="Сохранить" VerticalAlignment="Center" />

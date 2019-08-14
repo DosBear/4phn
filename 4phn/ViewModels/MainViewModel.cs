@@ -26,7 +26,7 @@ namespace _4phn.ViewModels
             if(e.Attributes["device"] == String.Format(Const.Phone.DND, Properties.Settings.Default.Phone))
             {
                 LogWriter.Instance.WriteToLog("DND " + e.Attributes["device"] + " " + e.Attributes["state"]);
-                ShowPopup("DND", "Состояние: " + (e.Attributes["state"] == Const.Phone.DND_STATE_BUSY ? "ЗАНЯТ" : "ДОСТУПЕН"));
+                ShowPopup("DND", "Состояние " + (e.Attributes["state"] == Const.Phone.DND_STATE_BUSY ? "ЗАНЯТ" : "ДОСТУПЕН"));
             }
                 
         }
@@ -39,7 +39,7 @@ namespace _4phn.ViewModels
 
             ATS.LastCallNum = e.CallerIdNum;
             ATS.LastCallName = e.CallerIdName;
-            LogWriter.Instance.WriteToLog("Call" + ATS.LastCallNum + " " + ATS.LastCallName);
+            LogWriter.Instance.WriteToLog("Call " + ATS.LastCallNum + " " + ATS.LastCallName);
 
             if (Properties.Settings.Default.ShowPopup)
             {
@@ -49,9 +49,15 @@ namespace _4phn.ViewModels
             }
             if(e.CallerIdName == string.Empty || e.CallerIdName == Const.Phone.UNKNOWN)
             {
-                EditNameWindow editNameWindow = new EditNameWindow();
-                editNameWindow.lblPhone.Content = ATS.LastCallNum;
-                editNameWindow.ShowDialog();
+                LogWriter.Instance.WriteToLog("Add contact ");
+                Application.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    EditNameWindow editNameWindow = new EditNameWindow();
+                    editNameWindow.Title = "Добавление нового контакта";
+                    editNameWindow.lblPhone.Content = ATS.LastCallNum;
+                    editNameWindow.ShowDialog();
+                    
+                });
             }
                 
         }

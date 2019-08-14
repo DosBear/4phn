@@ -40,7 +40,7 @@ namespace _4phn.ViewModels
             {
                 return new DelegateCommand((obj) =>
                 {
-                    ATS.CallToPhone(_Phone, "4phone");
+                    ATS.CallToPhone(_Phone, "4phn" + _Phone);
                 }, (obj) => Phone?.Length>0);
             }
         }
@@ -57,7 +57,7 @@ namespace _4phn.ViewModels
                     CloseAction();
 
 
-                }, (obj) => _OrgName?.Length > 0);
+                }, (obj) => OrgName?.Length > 0);
             }
         }
     }

@@ -15,28 +15,41 @@ namespace _4phn
   
         public static void Init()
         {
-            LogWriter.Instance.WriteToLog("Try connect to ATS");
-            manager = new ManagerConnection(
-                Properties.Settings.Default.Server,
-                Properties.Settings.Default.Port,
-                Properties.Settings.Default.User,
-                Properties.Settings.Default.Password,
-                Encoding.UTF8
-                );
-            LogWriter.Instance.WriteToLog("ATS version" + manager.AsteriskVersion);
-            manager.Login();
+            try
+            {
+                LogWriter.Instance.WriteToLog("Try connect to ATS");
+                manager = new ManagerConnection(
+                    Properties.Settings.Default.Server,
+                    Properties.Settings.Default.Port,
+                    Properties.Settings.Default.User,
+                    Properties.Settings.Default.Password,
+                    Encoding.UTF8
+                    );
+                manager.Login();
+                LogWriter.Instance.WriteToLog("ATS version " + manager.AsteriskVersion);
+            } catch(Exception err)
+            {
+                LogWriter.Instance.WriteToLog("ATS init error " + err.Message);
+            }
         }
 
         public static void CallToPhone(string phone, string name)
         {
-            OriginateAction action = new OriginateAction();
-            action.Channel = "SIP/" + Properties.Settings.Default.Phone;
-            action.CallerId = "Набор номера: " + name;
-            action.Exten = phone;
-            action.Context = "call-out";
-            action.Priority = "0";
-            action.Async = true;
-            manager.SendAction(action);
+            try
+            {
+                OriginateAction action = new OriginateAction();
+                action.Channel = "SIP/" + Properties.Settings.Default.Phone;
+                action.CallerId = "Набор номера: " + name;
+                action.Exten = phone;
+                action.Context = "call-out";
+                action.Priority = "0";
+                action.Async = true;
+                manager.SendAction(action);
+            }
+            catch (Exception err)
+            {
+                LogWriter.Instance.WriteToLog("CallToPhone error " + err.Message);
+            }
         }
 
     }
