@@ -52,13 +52,23 @@ namespace _4phn.ViewModels
             {
                 return new DelegateCommand((obj) =>
                 {
-                    Database.execute(string.Format(Const.SQL.INSERT_PHONEBOOK, _OrgName, _Phone));
-                    MessageBox.Show("Данные успешно сохранены!", "Сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if(obj.ToString() == "Сохранить")
+                    {
+                        Database.execute(string.Format(Const.SQL.UPDATE_PHONEBOOK, _OrgName, _Phone));
+                        
+                    } else
+                    {
+                        Database.execute(string.Format(Const.SQL.INSERT_PHONEBOOK, _OrgName, _Phone));
+                    }
+                        
+                    MessageBox.Show("Данные успешно добавлены!", "Добавление", MessageBoxButton.OK, MessageBoxImage.Information);
                     CloseAction();
 
 
                 }, (obj) => OrgName?.Length > 0);
             }
         }
+
+
     }
 }

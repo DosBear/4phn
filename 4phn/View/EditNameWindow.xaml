@@ -24,10 +24,10 @@
             <TextBox x:Name="txtName" Grid.Row="1" FontSize="28" Text="{Binding Path=OrgName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
 
-        <Button Grid.Column="1" x:Name="btnCopy"  Command="{Binding Path=Save}">
+        <Button Grid.Column="1" x:Name="btnCopy"  Command="{Binding Path=Save}"  CommandParameter="{Binding Text, ElementName=tbStateButton}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/save.png" Width="16" Height="16" Margin="10"/>
-                <TextBlock Text="Сохранить" VerticalAlignment="Center" />
+                <TextBlock Text="Сохранить" VerticalAlignment="Center" x:Name="tbStateButton"/>
             </StackPanel>
         </Button>
 

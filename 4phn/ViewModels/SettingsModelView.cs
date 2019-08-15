@@ -22,6 +22,18 @@ namespace _4phn.ViewModels
         }
 
 
+        public int PropMaxHistoryRow
+        {
+            get { return Properties.Settings.Default.MaxHistoryRow; }
+            set
+            {
+                Properties.Settings.Default.MaxHistoryRow = value;
+                OnPropertyChanged(nameof(PropMaxHistoryRow));
+            }
+        }
+
+
+
         public bool PropShowPopup
         {
             get { return Properties.Settings.Default.ShowPopup; }

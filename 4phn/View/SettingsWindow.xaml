@@ -18,6 +18,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <GroupBox x:Name="groupBox" Header="Настройки" Grid.Row="0" Grid.Column="0" Margin="10">
             <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" >
@@ -31,7 +32,7 @@
                 <TextBox x:Name="txtUser" Text="{Binding PropUser}"/>
                 <Label Content="Пароль"/>
                 <TextBox x:Name="txtPassword" Text="{Binding PropPassword}"/>
-                <CheckBox x:Name="chkShowPopup" Content="Показывать сообщения при звонке" IsChecked="{Binding PropShowPopup}"/>
+                
             </StackPanel>
         </GroupBox>
         
@@ -48,8 +49,16 @@
             </StackPanel>
         </GroupBox>
 
+        <GroupBox Header="Прочее" Grid.Row="2" Grid.Column="0" Margin="10">
+            <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" >
+                <CheckBox x:Name="chkShowPopup" Content="Показывать сообщения при звонке" IsChecked="{Binding PropShowPopup}"/>
+                <Label Content="Макс. число записей в истории"/>
+                <TextBox Text="{Binding PropMaxHistoryRow}"/>
+            </StackPanel>
+        </GroupBox>
 
-        <StackPanel Grid.Row="2" Grid.Column="0" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Сохранить" Height="30" Margin="0,0,10,0" MinWidth="80"  Command="{Binding Path=Save}"/>
             <Button Content="Отмена"  Height="30" Margin="10,0,0,0" MinWidth="80"   Command="{Binding Path=Cancel}" IsCancel="True"/>
         </StackPanel>

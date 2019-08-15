@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using _4phn.View;
 using System.Windows;
+using System.Reflection;
 
 namespace _4phn.ViewModels
 {
@@ -53,6 +54,7 @@ namespace _4phn.ViewModels
                 Application.Current.Dispatcher.Invoke((Action)delegate
                 {
                     EditNameWindow editNameWindow = new EditNameWindow();
+                    editNameWindow.tbStateButton.Text = "Добавить";
                     editNameWindow.Title = "Добавление нового контакта";
                     editNameWindow.lblPhone.Content = ATS.LastCallNum;
                     editNameWindow.ShowDialog();
@@ -141,5 +143,21 @@ namespace _4phn.ViewModels
                 });
             }
         }
+
+        public ICommand About
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                    AboutWindow aboutWindow = new AboutWindow();
+                    aboutWindow.tbName.Text = String.Format("4phn v.{0}", version);
+                    aboutWindow.ShowDialog();
+
+                });
+            }
+        }
+
     }
 }

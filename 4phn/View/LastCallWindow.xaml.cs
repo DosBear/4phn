@@ -41,7 +41,7 @@ namespace _4phn.View
 
         private void BtnCall_Click(object sender, RoutedEventArgs e)
         {
-            ATS.CallToPhone(phone, name);
+            ATS.CallToPhone(phone.Replace(" ", ""), name);
             this.Close();
         }
     }

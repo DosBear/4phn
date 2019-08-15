@@ -26,8 +26,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>4phn</ProductName>
     <PublisherName>4phn</PublisherName>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
@@ -105,6 +105,9 @@
     <Compile Include="ViewModels\GridModelView.cs" />
     <Compile Include="ViewModels\SecondaryModelView.cs" />
     <Compile Include="ViewModels\SettingsModelView.cs" />
+    <Compile Include="View\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditNameWindow.xaml.cs">
       <DependentUpon>EditNameWindow.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
     <Compile Include="View\UserCallWindow.xaml.cs">
       <DependentUpon>UserCallWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditNameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +188,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="4phn_TemporaryKey.pfx" />
     <None Include="app.config" />
@@ -195,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\phone.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\call.ico" />
@@ -237,6 +242,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\minicopy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hand.png" />
+    <Resource Include="Resources\history.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

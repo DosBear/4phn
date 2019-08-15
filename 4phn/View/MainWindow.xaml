@@ -16,24 +16,42 @@
 
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem  Header="Последний звонок" FontWeight="Bold" Command="{Binding Path=LastCall}">
+                    <MenuItem  Header="Последний звонок"  Command="{Binding Path=LastCall}">
                         <MenuItem.Icon>
                             <Image Source="/Resources/phone.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem  Header="Набрать номер"  Command="{Binding Path=UserCall}"/>
-                    <MenuItem  Header="История звонков"  Command="{Binding Path=HistoryPhone}"/>
+                    <MenuItem  Header="Набрать номер"  Command="{Binding Path=UserCall}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/hand.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem  Header="История звонков"  Command="{Binding Path=HistoryPhone}" FontWeight="Bold">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/history.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem  Header="Телефонный справочник" Command="{Binding Path=Phonebook}">
                         <MenuItem.Icon>
                             <Image Source="/Resources/book.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem  Header="Настройка" Command="{Binding Path=ShowSettings}">
+                    <Separator />
+                    <MenuItem Header="Сервис"  >
+
+                        <MenuItem  Header="Настройка" Command="{Binding Path=ShowSettings}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/settings.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem  Header="О программе" Command="{Binding Path=About}" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem  Header="Закрыть" Command="{Binding Path=CloseApp}">
                         <MenuItem.Icon>
-                            <Image Source="/Resources/settings.png"/>
+                            <Image Source="/Resources/exit.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem  Header="Выход" Command="{Binding Path=CloseApp}"/>
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>

@@ -31,7 +31,10 @@ namespace _4phn.ViewModels
         {
             get
             {
-                _HistoryBook = Database.getData(string.Format(Const.SQL.SELECT_HISTORY, Properties.Settings.Default.Phone));
+                _HistoryBook = Database.getData(string.Format(Const.SQL.SELECT_HISTORY, 
+                    Properties.Settings.Default.Phone,
+                    Properties.Settings.Default.MaxHistoryRow
+                    ));
                 return _HistoryBook;
             }
             set
@@ -122,6 +125,7 @@ namespace _4phn.ViewModels
                     string phone = drv.Row.ItemArray[0].ToString();
 
                     EditNameWindow editNameWindow = new EditNameWindow();
+                    editNameWindow.tbStateButton.Text = "Сохранить";
                     editNameWindow.Title = "Редактирование контакта";
                     editNameWindow.lblPhone.Content = phone;
                     editNameWindow.txtName.Text = name;
@@ -185,15 +189,29 @@ namespace _4phn.ViewModels
                     System.Collections.IList items = (System.Collections.IList)obj;
                     DataRowView drv = (DataRowView)items[0];
                     string name = drv.Row.ItemArray[1].ToString();
-                    if (name.IndexOf("\"\"") < 0) return;
+                    EditNameWindow editNameWindow = new EditNameWindow();
+
+                    if (name.IndexOf("\"\"") >= 0)
+                    {
+                        editNameWindow.tbStateButton.Text = "Добавить";
+                        editNameWindow.txtName.Text = "";
+                    } else
+                    {
+                        editNameWindow.tbStateButton.Text = "Сохранить";
+                        if (name.IndexOf('"') >= 0) name = name.Split('"')[1];
+                        editNameWindow.txtName.Text = name;
+
+                    }
+
 
                     string phone = drv.Row.ItemArray[2].ToString();
                     if (phone == Properties.Settings.Default.Phone) phone = drv.Row.ItemArray[3].ToString();
 
-                    EditNameWindow editNameWindow = new EditNameWindow();
+                    
+                    
                     editNameWindow.Title = "Добавление контакта";
                     editNameWindow.lblPhone.Content = phone;
-                    editNameWindow.txtName.Text = "";
+                    
                     editNameWindow.ShowDialog();
 
 
