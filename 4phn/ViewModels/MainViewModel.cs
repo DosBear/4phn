@@ -150,14 +150,25 @@ namespace _4phn.ViewModels
             {
                 return new DelegateCommand((obj) =>
                 {
-                    string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                     AboutWindow aboutWindow = new AboutWindow();
-                    aboutWindow.tbName.Text = String.Format("4phn v.{0}", version);
+                    aboutWindow.tbName.Text = String.Format("4phn v.{0}", GetPublishedVersion());
                     aboutWindow.ShowDialog();
 
                 });
             }
         }
+
+
+        private string GetPublishedVersion()
+        {
+            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            {
+                return System.Deployment.Application.ApplicationDeployment.CurrentDeployment.
+                    CurrentVersion.ToString();
+            }
+            return "[beta]";
+        }
+
 
     }
 }
