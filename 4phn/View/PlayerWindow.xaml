@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_4phn.View"
         mc:Ignorable="d"
-        Title="PlayerWindow" Height="103.287" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Title="Прослушать запись" Height="103.287" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         MinWidth="300" SizeToContent="WidthAndHeight" Activated="Window_Activated">
     <Window.CommandBindings>
         <CommandBinding Command="MediaCommands.Play" CanExecute="Play_CanExecute" Executed="Play_Executed" />

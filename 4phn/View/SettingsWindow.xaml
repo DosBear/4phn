@@ -46,9 +46,7 @@
 
                 <Label Content="Пароль"/>
                 <TextBox Text="{Binding PropMySQLPassword}"/>
-                
-                <Label Content="Каталог с записями разговоров"/>
-                <TextBox Text="{Binding PropSoundPath}"/>
+               
             </StackPanel>
         </GroupBox>
 
@@ -57,6 +55,8 @@
                 <CheckBox x:Name="chkShowPopup" Content="Показывать сообщения при звонке" IsChecked="{Binding PropShowPopup}"/>
                 <Label Content="Макс. число записей в истории"/>
                 <TextBox Text="{Binding PropMaxHistoryRow}"/>
+                <Label Content="Каталог с записями разговоров"/>
+                <TextBox Text="{Binding PropSoundPath}"/>
             </StackPanel>
         </GroupBox>
 

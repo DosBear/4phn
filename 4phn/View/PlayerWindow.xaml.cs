@@ -35,13 +35,11 @@ namespace _4phn.View
                 sliProgress.Minimum = 0;
                 sliProgress.Maximum = mePlayer.NaturalDuration.TimeSpan.TotalSeconds;
                 sliProgress.Value = mePlayer.Position.TotalSeconds;
+                
             }
         }
 
-        private void Open_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
+  
 
         private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -116,6 +114,7 @@ namespace _4phn.View
         {
             mePlayer.Source = new Uri(mp3filename);
             mePlayer.Play();
+            mediaPlayerIsPlaying = true;
         }
     }
 }
