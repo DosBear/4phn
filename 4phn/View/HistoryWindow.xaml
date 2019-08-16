@@ -60,6 +60,17 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn Width="24">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnPlayRecFile" Command="{Binding Path=DataContext.PlayRecFileRow, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                    CommandParameter="{Binding SelectedItems, ElementName=gridHistoryBook}">
+                                <Image Source="/Resources/play.png" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
 
                 <DataGridTextColumn Header="Время"  Width="auto" IsReadOnly="True"  Binding="{Binding Path=calldate, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"/>
@@ -68,6 +79,7 @@
                 <DataGridTextColumn Header="Телефон вх" Width="auto" IsReadOnly="True"  Binding="{Binding Path=dst}"  />
                 <DataGridTextColumn Header="Состояние" Width="auto" IsReadOnly="True"  Binding="{Binding Path=disposition}"  />
                 <DataGridTextColumn Header="Длительность" Width="auto" IsReadOnly="True"  Binding="{Binding Path=duration}"  />
+                <DataGridTextColumn Header="Файл" Width="auto" IsReadOnly="True"  Binding="{Binding Path=filename}" Visibility="Hidden"  />
             </DataGrid.Columns>
      
         </DataGrid>

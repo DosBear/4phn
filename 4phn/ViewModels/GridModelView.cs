@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -154,6 +155,32 @@ namespace _4phn.ViewModels
                     Clipboard.SetDataObject(phone + " " + name);
 
                 });
+            }
+        }
+
+        public ICommand PlayRecFileRow
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+
+                    System.Collections.IList items = (System.Collections.IList)obj;
+                    DataRowView drv = (DataRowView)items[0];
+                    string file = drv.Row.ItemArray[7].ToString();
+
+                    file = Path.Combine(Properties.Settings.Default.SoundPath, file.Split('-')[0], file.Split('-')[1], file.Split('-')[2], file);
+                    if(!File.Exists(file))
+                    {
+                        MessageBox.Show("Нет доступа к файлу " + file, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Question);
+                        return;
+                    }
+                    PlayerWindow playerWindow = new PlayerWindow();
+                    playerWindow.mp3filename = file;
+                    playerWindow.ShowDialog();
+
+
+                }, (obj) => Properties.Settings.Default.SoundPath.Length>0 );
             }
         }
 

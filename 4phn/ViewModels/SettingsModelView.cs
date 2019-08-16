@@ -33,6 +33,18 @@ namespace _4phn.ViewModels
         }
 
 
+        public string PropSoundPath
+        {
+            get { return Properties.Settings.Default.SoundPath; }
+            set
+            {
+                 
+                Properties.Settings.Default.SoundPath = value;
+                OnPropertyChanged(nameof(PropSoundPath));
+            }
+        }
+
+
 
         public bool PropShowPopup
         {

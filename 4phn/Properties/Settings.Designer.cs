@@ -154,5 +154,17 @@ namespace _4phn.Properties {
                 this["MaxHistoryRow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SoundPath {
+            get {
+                return ((string)(this["SoundPath"]));
+            }
+            set {
+                this["SoundPath"] = value;
+            }
+        }
     }
 }

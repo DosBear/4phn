@@ -46,6 +46,9 @@
 
                 <Label Content="Пароль"/>
                 <TextBox Text="{Binding PropMySQLPassword}"/>
+                
+                <Label Content="Каталог с записями разговоров"/>
+                <TextBox Text="{Binding PropSoundPath}"/>
             </StackPanel>
         </GroupBox>
 
